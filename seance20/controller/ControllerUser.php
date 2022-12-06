@@ -10,16 +10,15 @@ class ControllerUser{
     }
 
     public function create(){
-        CheckSession::sessionAuth();
-    //print_r($_SESSION);
-        if ($_SESSION['privilege_id'] == 1 || $_SESSION['privilege_id'] == 2){
-            $privilege = new ModelPrivilege;
-            $selectPrivilege = $privilege->select();
-            twig::render('user-create.php', ['privileges' => $selectPrivilege]);
-        }else{
-            requirePage::redirectPage('home/error');
-        }
-       
+        if(CheckSession::sessionAuth()){
+            if ($_SESSION['privilege_id'] == 1 || $_SESSION['privilege_id'] == 2){
+                $privilege = new ModelPrivilege;
+                $selectPrivilege = $privilege->select();
+                twig::render('user-create.php', ['privileges' => $selectPrivilege]);
+            }else{
+                requirePage::redirectPage('home/error');
+            }
+        }          
     }
     public function store(){
 

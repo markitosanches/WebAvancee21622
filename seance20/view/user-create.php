@@ -1,7 +1,5 @@
-{{ include('header.php', {title: 'User'})}}
+{{ include('header.php', {title: 'User', pageHeader: 'Saisir User'})}}
     <main>
-        <h2>Saisir User</h2>
-        <span class="error">{{ errors|raw }}</span>
         <form action="{{ path }}user/store" method="post">
             <label>Nom 
                 <input type="text" name="nom" value="{{ user.nom }}">

@@ -1,5 +1,4 @@
 <?php
-
 abstract class Crud extends PDO {
 
     public function __construct(){
